@@ -38,3 +38,4 @@ a{color:#58a6ff}.item{padding:8px 0;border-bottom:1px solid #18202b}.item .meta{
 .ofctl{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:6px;font-size:12px;color:#9fb0c3}.ofctl form{display:flex;gap:4px}
 .ofctl input,.ofctl select,.ofctl button{background:#111821;color:#e6edf3;border:1px solid #2a3442;border-radius:6px;padding:5px 7px;font-size:13px;color-scheme:dark}.ofctl #ofq{width:130px;text-transform:uppercase}.ofctl button{cursor:pointer}
 .ofmsg{color:#e3b341}
+@media(max-width:900px){.ofmain{width:100%}.ofctl input[type=date]{width:130px}}.ofwrap,.ofmain,.ofchart{max-width:100%}#view{overflow-x:hidden}
