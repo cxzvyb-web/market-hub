@@ -58,5 +58,5 @@ async function drawFlow(){
 document.addEventListener('click',e=>{
   const x=e.target.closest('[data-cx]');if(x){e.stopPropagation();const t=x.dataset.cx;OF.charts=OF.charts.filter(c=>c!==t);if(OF.cur===t)OF.cur=OF.charts.at(-1)||null;ofSave();render();return}
   const h=e.target.closest('[data-hub]');if(h){e.stopPropagation();OF.hub=h.dataset.hub;ofSave();const a=$('.ofhub');if(a)a.innerHTML=hubPanel();return}
-  if(e.target.closest('a'))return;
-  const c=e.target.closest('[data-c]');if(c){e.stopPropagation();openChart(c.dataset.c)}},true);
+  const a=e.target.closest('a');if(a&&!a.dataset.c)return;
+  const c=e.target.closest('[data-c]');if(c){e.preventDefault();e.stopPropagation();openChart(c.dataset.c)}},true);
