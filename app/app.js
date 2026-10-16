@@ -1,5 +1,5 @@
 'use strict';
-const TABS=[['market','Market'],['premarket','Premarket'],['intraday','Intraday'],['afterhours','After-Hours'],['news','News & Filings'],['watch','★ Watchlist']];
+const TABS=[['market','Market'],['premarket','Premarket'],['intraday','Intraday'],['afterhours','After-Hours'],['flow','Order Flow'],['news','News & Filings'],['watch','★ Watchlist']];
 const D={},$=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const LS=(k,v)=>v===undefined?JSON.parse(localStorage.getItem('clutch.'+k)||'null'):localStorage.setItem('clutch.'+k,JSON.stringify(v));
 let tab=(location.hash.slice(1)||LS('tab')||'market'),sort=LS('sort')||{k:'pct',a:false},newsSeg='all';
@@ -21,7 +21,7 @@ function navs(){$('#tabs').innerHTML=TABS.map(([k,l])=>`<button data-t="${k}" cl
 $('#tabs').onclick=e=>{const t=e.target.dataset.t;if(t){tab=t;LS('tab',t);history.replaceState(null,'','#'+t);render();scrollTo(0,0)}};
 $('#refresh').onclick=load;
 function render(){navs();const v=$('#view');
-  if(tab==='market')v.innerHTML=market();else if(tab==='news')v.innerHTML=news();else if(tab==='watch')v.innerHTML=watch();else v.innerHTML=screener(tab)}
+  if(tab==='market')v.innerHTML=market();else if(tab==='news')v.innerHTML=news();else if(tab==='watch')v.innerHTML=watch();else if(tab==='flow')v.innerHTML=flowView();else v.innerHTML=screener(tab)}
 
 function market(){const m=D.market;if(!m)return '<div class=empty>Market data unavailable.</div>';
   const cards=m.cards.map(c=>`<div class=card><div class=n>${esc(c.name)}</div><div class=p>${c.price==null?'<span class=mut>n/a</span>':c.price.toLocaleString(undefined,{maximumFractionDigits:2})}</div>${pc(c.pct)}${c.ext?`<div><small>ext ${esc(c.ext)} (${((c.ext/c.price-1)*100).toFixed(2)}%)</small></div>`:''}<div><small>${esc(c.src||'')} ${esc(c.time||'')}</small></div></div>`).join('');
@@ -60,7 +60,7 @@ function openT(t){const hits=find(t),r=hits[0]?.[1];
   <h2>Catalyst</h2>${r?.news?`<a href="${esc(r.news[1])}" target=_blank rel=noopener>${esc(r.news[0])}</a>`:'<span class=mut>No news found</span>'}
   ${news.map(n=>`<div class=item><div class=meta>${esc(n.time)} · <span class=tag>${esc(n.why)}</span></div><a href="${esc(n.url)}" target=_blank rel=noopener>${esc(n.title)}</a></div>`).join('')}
   <h2>SEC filings</h2>${fil.length?fil.map(f=>`<div class=item><div class=meta>${esc(f.date||ptTime(f.accepted))} ${f.dilution?'<span class="tag dil">dilution</span>':''}</div><a href="${esc(f.url)}" target=_blank rel=noopener>${esc(f.form)}</a> <small class=mut>${esc(f.items)} ${esc(f.note)}</small></div>`).join(''):'<span class=mut>None on file in our watchlist scan (check EDGAR).</span>'}
-  <h2>Links</h2><div class=links><a href="https://finviz.com/quote.ashx?t=${t}" target=_blank rel=noopener>finviz</a><a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=${t}&owner=include&count=40" target=_blank rel=noopener>SEC EDGAR</a><a href="https://finance.yahoo.com/quote/${t}" target=_blank rel=noopener>Yahoo</a><a href="https://www.benzinga.com/quote/${t}" target=_blank rel=noopener>Benzinga</a><a href="https://x.com/search?q=%24${t}&f=live" target=_blank rel=noopener>X</a></div>
+  <h2>Links</h2><div class=links><a href="#flow" data-c="${t}">📈 Order Flow chart</a><a href="https://finviz.com/quote.ashx?t=${t}" target=_blank rel=noopener>finviz</a><a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=${t}&owner=include&count=40" target=_blank rel=noopener>SEC EDGAR</a><a href="https://finance.yahoo.com/quote/${t}" target=_blank rel=noopener>Yahoo</a><a href="https://www.benzinga.com/quote/${t}" target=_blank rel=noopener>Benzinga</a><a href="https://x.com/search?q=%24${t}&f=live" target=_blank rel=noopener>X</a></div>
   <p class=mut style="margin-top:16px">Not investment advice.</p>`;
   $('#drawer').hidden=$('#scrim').hidden=false}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeD()});

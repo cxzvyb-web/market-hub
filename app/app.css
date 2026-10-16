@@ -26,3 +26,12 @@ a{color:#58a6ff}.item{padding:8px 0;border-bottom:1px solid #18202b}.item .meta{
 .seg{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}.seg button{background:#111821;color:#9fb0c3;border:1px solid #2a3442;border-radius:16px;padding:5px 10px}.seg button.on{background:#1f6feb;color:#fff;border-color:#1f6feb}
 .disc{font-size:11px;color:#8b949e;background:#14110a;border-top:1px solid #3d2e00;padding:12px 14px 24px;line-height:1.5}.disc b{color:#e3b341}
 .empty{padding:20px;text-align:center;color:#6e7f92}
+.ofwrap{display:flex;gap:10px;align-items:flex-start}.ofmain{flex:1;min-width:0}.ofhub{width:320px;flex:0 0 320px;background:#0f141b;border:1px solid #1f2733;border-radius:10px;padding:8px;max-height:calc(100vh - 110px);overflow:auto;position:sticky;top:50px}
+.ofchart{position:relative;height:min(62vh,560px);border:1px solid #1f2733;border-radius:10px;overflow:hidden}#ofbub{position:absolute;left:0;top:0;pointer-events:none;z-index:5}
+.ctabs{display:flex;gap:4px;overflow-x:auto;margin-bottom:6px}.ct{background:#111821;border:1px solid #2a3442;border-radius:8px;padding:4px 8px;cursor:pointer;white-space:nowrap;font-weight:700}.ct.on{background:#1f3b57;border-color:#2f81f7;color:#79c0ff}.ct i{font-style:normal;margin-left:6px;color:#6e7f92}
+.ofhead{padding:4px 2px 6px;font-size:13px}.oflegend{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:#9fb0c3;padding:6px 2px}.oflegend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;vertical-align:-1px}.oflegend .g{background:#00c853}.oflegend .r{background:#ff1744}
+.ofnote{font-size:11px;color:#8b949e;background:#14110a;border:1px solid #3d2e00;border-radius:8px;padding:8px}.ofnote b{color:#e3b341}
+.hubh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}.hubh b{color:#ffd33d}.hubt table{font-size:12px}.hubt td,.hubt th{padding:3px 4px}
+.ofhub tr.hr{cursor:pointer}.ofhub tr.hsub td{white-space:normal;font-size:11px;padding-top:0;color:#c9d1d9}.ofhub tr.cur{background:#1a2a3c}.ofhub tr.hr:hover,.ofhub tr.hsub:hover{background:#131b25}.dilc{color:#ffb44d!important}
+.ofhub .nw{padding:5px 0;border-bottom:1px dashed #1b222c;font-size:12px}.ofhub .nw .meta{font-size:10px;color:#6e7f92}
+@media(max-width:900px){.ofwrap{flex-direction:column}.ofhub{width:100%;flex:none;position:static;max-height:none}.ofchart{height:55vh}}
