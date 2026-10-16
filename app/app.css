@@ -35,3 +35,6 @@ a{color:#58a6ff}.item{padding:8px 0;border-bottom:1px solid #18202b}.item .meta{
 .ofhub tr.hr{cursor:pointer}.ofhub tr.hsub td{white-space:normal;font-size:11px;padding-top:0;color:#c9d1d9}.ofhub tr.cur{background:#1a2a3c}.ofhub tr.hr:hover,.ofhub tr.hsub:hover{background:#131b25}.dilc{color:#ffb44d!important}
 .ofhub .nw{padding:5px 0;border-bottom:1px dashed #1b222c;font-size:12px}.ofhub .nw .meta{font-size:10px;color:#6e7f92}
 @media(max-width:900px){.ofwrap{flex-direction:column}.ofhub{width:100%;flex:none;position:static;max-height:none}.ofchart{height:55vh}}
+.ofctl{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:6px;font-size:12px;color:#9fb0c3}.ofctl form{display:flex;gap:4px}
+.ofctl input,.ofctl select,.ofctl button{background:#111821;color:#e6edf3;border:1px solid #2a3442;border-radius:6px;padding:5px 7px;font-size:13px;color-scheme:dark}.ofctl #ofq{width:130px;text-transform:uppercase}.ofctl button{cursor:pointer}
+.ofmsg{color:#e3b341}
