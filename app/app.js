@@ -2,7 +2,7 @@
 const TABS=[['market','Market'],['premarket','Premarket'],['intraday','Intraday'],['afterhours','After-Hours'],['flow','Order Flow'],['news','News & Filings'],['watch','★ Watchlist']];
 const D={},$=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const LS=(k,v)=>v===undefined?JSON.parse(localStorage.getItem('clutch.'+k)||'null'):localStorage.setItem('clutch.'+k,JSON.stringify(v));
-let tab=(location.hash.slice(1)||LS('tab')||'market'),sort=LS('sort')||{k:'pct',a:false},newsSeg='all';
+let tab=(location.hash.slice(1).split('/')[0]||LS('tab')||'market'),sort=LS('sort')||{k:'pct',a:false},newsSeg='all';
 const F=Object.assign({maxFloat:50,minRot:2,minPct:0,hideDil:false,qualOnly:false,q:''},LS('filters')||{});
 const W=new Set(LS('watch')||[]);
 const pc=v=>v==null?'<span class=mut>n/a</span>':`<span class="${v>0?'up':v<0?'dn':''}">${v>0?'+':''}${v.toFixed(2)}%</span>`;

@@ -78,3 +78,4 @@ document.addEventListener('submit',e=>{if(e.target.id==='ofsearch'){e.preventDef
 document.addEventListener('change',e=>{const id=e.target.id;
   if(id==='ofiv'){OF.iv=e.target.value;ofSave();render()}else if(id==='offrom'||id==='ofto'){OF[id==='offrom'?'from':'to']=e.target.value;render()}});
 document.addEventListener('click',e=>{if(e.target.id==='ofall'){OF.from=OF.to='';render()}});
+{const p=location.hash.slice(1).split('/');if(p[0]==='flow'&&p[1]){const t=p[1].toUpperCase();if(!OF.charts.includes(t))OF.charts.push(t);OF.cur=t;if(IVL[p[2]])OF.iv=p[2];if(p[3])OF.from=p[3];if(p[4])OF.to=p[4];ofSave()}}
